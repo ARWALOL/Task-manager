@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة المهام الجامعية</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init('YOUR_USER_ID'); // استبدل YOUR_USER_ID بمعرّف المستخدم الخاص بك
+    </script>
+</head>
+<body>
+    <header>
+        <h1>نظام إدارة المهام الجامعية</h1>
+    </header>
+    <main>
+        <section id="task-form">
+            <h2>إضافة مهمة جديدة</h2>
+            <form id="addTaskForm">
+                <input type="email" id="userEmail" placeholder="البريد الإلكتروني" required>
+                <input type="text" id="taskTitle" placeholder="عنوان المهمة" required>
+                <textarea id="taskDescription" placeholder="وصف المهمة"></textarea>
+                <input type="date" id="taskDeadline" required>
+                <input type="time" id="taskTime" required>
+                <select id="taskPriority">
+                    <option value="low">منخفض</option>
+                    <option value="medium">متوسط</option>
+                    <option value="high">عالي</option>
+                </select>
+                <button type="submit">إضافة المهمة</button>
+            </form>
+        </section>
+        <section id="task-list">
+            <h2>قائمة المهام</h2>
+            <div id="filter-buttons">
+                <button onclick="filterTasks('all')">الكل</button>
+                <button onclick="filterTasks('high')">عالي</button>
+                <button onclick="filterTasks('medium')">متوسط</button>
+                <button onclick="filterTasks('low')">منخفض</button>
+                <button onclick="sortTasksByPriority()">ترتيب حسب الأهمية</button>
+            </div>
+            <ul id="tasks"></ul>
+        </section>
+        <section id="productivity-analysis">
+            <h2>تحليل الإنتاجية</h2>
+            <div id="stats">
+                <p>المهام المكتملة: <span id="completed-tasks">0</span></p>
+                <p>المهام المعلقة: <span id="pending-tasks">0</span></p>
+                <p>نسبة الإنجاز: <span id="completion-rate">0%</span></p>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
